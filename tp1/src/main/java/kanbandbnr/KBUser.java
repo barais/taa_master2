@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class User {
+public class KBUser {
 
 	private Long id;
 
@@ -16,19 +16,19 @@ public class User {
 
 	private String email;
 
-	private Card card;
+	private KBCard card;
 
-	public User() {
+	public KBUser() {
 	}
 
-	public User(String firstName, String lastName, String email) {
+	public KBUser(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
 	@OneToOne(mappedBy = "assignedUser")
-	public Card getCard() {
+	public KBCard getCard() {
 		return card;
 	}
 
@@ -50,7 +50,7 @@ public class User {
 		return lastName;
 	}
 
-	public void setCard(Card card) {
+	public void setCard(KBCard card) {
 		this.card = card;
 	}
 

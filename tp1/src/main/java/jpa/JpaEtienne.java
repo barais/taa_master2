@@ -7,10 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import kanbandbnr.Column;
-import kanbandbnr.Board;
-import kanbandbnr.Card;
-import kanbandbnr.User;
+import kanbandbnr.KBColumn;
+import kanbandbnr.KBBoard;
+import kanbandbnr.KBCard;
+import kanbandbnr.KBUser;
 
 /**
  * jdbc:hsqldb:hsql://localhost/
@@ -28,7 +28,7 @@ public class JpaEtienne {
 	}
 
 	public static void main(String[] args) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa-example");
 		EntityManager manager = factory.createEntityManager();
 
 		JpaEtienne jpa = new JpaEtienne(manager);
@@ -50,32 +50,33 @@ public class JpaEtienne {
 	}
 
 	private void populate() {
-		int nb = manager.createQuery("select b from Board b", Board.class).getResultList().size();
+		int nb = manager.createQuery("select b from KBBoard b", KBBoard.class).getResultList().size();
 
 		if (nb == 0) {
 
-			Board board = new Board("Board");
+			KBBoard board = new KBBoard();
+			board.setName("Board");
 
-			Column col1 = new Column("TODO");
-			Column col2 = new Column("DOING");
-			Column col3 = new Column("DONE");
+			KBColumn col1 = new KBColumn("TODO");
+			KBColumn col2 = new KBColumn("DOING");
+			KBColumn col3 = new KBColumn("DONE");
 
 			board.addColumn(col1);
 			board.addColumn(col2);
 			board.addColumn(col3);
 
-			User user = new User("Jean", "Bon", "beurre@mail.fr");
-			User user2 = new User("Jean", "Aimarre", "tartine@mail.fr");
+			KBUser user1 = new KBUser("Jean", "Bon", "beurre@mail.fr");
+			KBUser user2 = new KBUser("Jean", "Aimarre", "tartine@mail.fr");
 
-			Card card1 = new Card("ranger", "une maison rangée c'est bien", 30, "maison.com", "maison");
-			card1.setAssignedUser(user);
-			Card card2 = new Card("faire à manger", "manger c'est bon des fois", 45, "cuisine.net", "cuisine");
+			KBCard card1 = new KBCard("ranger", "une maison rangée c'est bien", 30, "maison.com", "maison");
+			card1.setAssignedUser(user1);
+			KBCard card2 = new KBCard("faire à manger", "manger c'est bon des fois", 45, "cuisine.net", "cuisine");
 			card2.setAssignedUser(user2);
 
 			col1.addCard(card1);
 			col1.addCard(card2);
 
-			manager.persist(user);
+			manager.persist(user1);
 			manager.persist(user2);
 
 			manager.persist(board);
@@ -83,10 +84,10 @@ public class JpaEtienne {
 	}
 	
 	private void listCards() {
-		List<Card> resultList = manager.createQuery("Select c From Card c", Card.class).getResultList();
+		List<KBCard> resultList = manager.createQuery("Select c From Card c", KBCard.class).getResultList();
 		
 		System.out.println("num of cards:" + resultList.size());
-		for (Card next : resultList) {
+		for (KBCard next : resultList) {
 			System.out.println("next card: " + next);
 		}
 	}

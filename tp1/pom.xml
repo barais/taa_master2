@@ -28,7 +28,7 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.4.21.Final</version>
 		</dependency>
-		
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 
@@ -42,10 +42,11 @@
 			<artifactId>hsqldb</artifactId>
 			<version>2.5.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.36</version>
+			<version>8.0.11</version>
 		</dependency>
 
 	</dependencies>

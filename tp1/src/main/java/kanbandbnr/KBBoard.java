@@ -10,27 +10,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Board {
+public class KBBoard {
 
 	private Long id;
 
 	private String name;
 
-	private List<Column> columns = new ArrayList<Column>();
+	private List<KBColumn> columns = new ArrayList<KBColumn>();
 
-	public Board() {
+	public KBBoard() {
 	}
 
-	public Board(String name) {
+	public KBBoard(String name) {
 		this.name = name;
 	}
 
-	public void addColumn(Column col) {
+	public void addColumn(KBColumn col) {
 		this.columns.add(col);
 	}
 
 	@OneToMany(mappedBy = "board", cascade = CascadeType.PERSIST)
-	public List<Column> getColumns() {
+	public List<KBColumn> getColumns() {
 		return columns;
 	}
 
@@ -44,7 +44,7 @@ public class Board {
 		return name;
 	}
 
-	public void setColumns(List<Column> colums) {
+	public void setColumns(List<KBColumn> colums) {
 		this.columns = colums;
 	}
 

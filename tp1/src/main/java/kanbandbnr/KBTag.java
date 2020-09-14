@@ -8,20 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Tag {
+public class KBTag {
 
 	private Long id;
 
 	private String label;
 
-	private List<Card> cards;
+	private List<KBCard> cards;
 	
-	public void addCards(Card card) {
+	public void addCards(KBCard card) {
 		this.cards.add(card);
 	}
 
 	@ManyToMany
-	public List<Card> getCards() {
+	public List<KBCard> getCards() {
 		return cards;
 	}
 
@@ -35,7 +35,7 @@ public class Tag {
 		return label;
 	}
 
-	public void setCards(List<Card> cards) {
+	public void setCards(List<KBCard> cards) {
 		this.cards = cards;
 	}
 

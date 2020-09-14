@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Card {
+public class KBCard {
 
 	private Long id;
 
@@ -22,11 +22,11 @@ public class Card {
 
 	private Calendar dueDate;
 
-	private User assignedUser;
+	private KBUser assignedUser;
 
 	private int estimatedTimeMinutes;
 
-	private List<Tag> tags = new ArrayList<Tag>();
+	private List<KBTag> tags = new ArrayList<KBTag>();
 
 	private String url;
 	
@@ -39,13 +39,13 @@ public class Card {
 				+ ", url=" + url + ", location=" + location + ", column=" + column + "]";
 	}
 
-	private Column column;
+	private KBColumn column;
 
-	public Card() {
+	public KBCard() {
 		super();
 	}
 
-	public Card(String label, String description, int estimatedTimeMinutes, String url, String location) {
+	public KBCard(String label, String description, int estimatedTimeMinutes, String url, String location) {
 		super();
 		this.label = label;
 		this.description = description;
@@ -54,17 +54,17 @@ public class Card {
 		this.location = location;
 	}
 
-	public void addTag(Tag tag) {
+	public void addTag(KBTag tag) {
 		this.tags.add(tag);
 	}
 
 	@OneToOne
-	public User getAssignedUser() {
+	public KBUser getAssignedUser() {
 		return assignedUser;
 	}
 
 	@ManyToOne
-	public Column getColumn() {
+	public KBColumn getColumn() {
 		return column;
 	}
 
@@ -95,7 +95,7 @@ public class Card {
 	}
 
 	@ManyToMany(mappedBy="cards")
-	public List<Tag> getTags() {
+	public List<KBTag> getTags() {
 		return tags;
 	}
 
@@ -103,11 +103,11 @@ public class Card {
 		return url;
 	}
 
-	public void setAssignedUser(User assignedUser) {
+	public void setAssignedUser(KBUser assignedUser) {
 		this.assignedUser = assignedUser;
 	}
 
-	public void setColumn(Column column) {
+	public void setColumn(KBColumn column) {
 		this.column = column;
 	}
 
@@ -135,7 +135,7 @@ public class Card {
 		this.location = location;
 	}
 
-	public void setTags(List<Tag> tags) {
+	public void setTags(List<KBTag> tags) {
 		this.tags = tags;
 	}
 
