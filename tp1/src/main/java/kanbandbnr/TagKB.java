@@ -5,23 +5,26 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class KBTag {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class TagKB {
 
 	private Long id;
 
 	private String label;
 
-	private List<KBCard> cards;
+	private List<CardKB> cards;
 	
-	public void addCards(KBCard card) {
+	public void addCards(CardKB card) {
 		this.cards.add(card);
 	}
 
 	@ManyToMany
-	public List<KBCard> getCards() {
+	public List<CardKB> getCards() {
 		return cards;
 	}
 
@@ -35,7 +38,7 @@ public class KBTag {
 		return label;
 	}
 
-	public void setCards(List<KBCard> cards) {
+	public void setCards(List<CardKB> cards) {
 		this.cards = cards;
 	}
 

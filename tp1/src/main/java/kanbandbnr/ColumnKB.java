@@ -11,35 +11,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class KBColumn {
+public class ColumnKB {
 
 	private Long id;
 
 	private String title;
 
-	private List<KBCard> cards = new ArrayList<KBCard>();
+	private List<CardKB> cards = new ArrayList<CardKB>();
 	
-	private KBBoard board;
+	private BoardKB board;
 
-	public KBColumn() {
+	public ColumnKB() {
 		super();
 	}
 
-	public KBColumn(String title) {
+	public ColumnKB(String title) {
 		this.title = title;
 	}
 
-	public void addCard(KBCard card) {
+	public void addCard(CardKB card) {
 		this.cards.add(card);
 	}
 
 	@ManyToOne
-	public KBBoard getBoard() {
+	public BoardKB getBoard() {
 		return board;
 	}
 
 	@OneToMany(mappedBy = "column", cascade = CascadeType.PERSIST)
-	public List<KBCard> getCards() {
+	public List<CardKB> getCards() {
 		return cards;
 	}
 
@@ -53,11 +53,11 @@ public class KBColumn {
 		return title;
 	}
 
-	public void setBoard(KBBoard board) {
+	public void setBoard(BoardKB board) {
 		this.board = board;
 	}
 
-	public void setCards(List<KBCard> cards) {
+	public void setCards(List<CardKB> cards) {
 		this.cards = cards;
 	}
 

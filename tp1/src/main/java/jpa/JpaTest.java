@@ -6,9 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import kanbandbnr.KBColumn;
-import kanbandbnr.KBBoard;
-import kanbandbnr.KBUser;
+import kanbandbnr.UserKB;
 
 public class JpaTest {
 
@@ -32,12 +30,12 @@ public class JpaTest {
 //
 //			manager.persist(table);
 
-			KBUser user = new KBUser();
+			UserKB user = new UserKB();
 			user.setEmail("beurre@mail.fr");
 			user.setFirstName("Jean");
 			user.setLastName("Bon");
 
-			KBUser user2 = new KBUser();
+			UserKB user2 = new UserKB();
 			user2.setEmail("tartine@mail.fr");
 			user2.setFirstName("Jean");
 			user2.setLastName("Aimarre");

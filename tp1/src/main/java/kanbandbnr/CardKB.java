@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class KBCard {
+public class CardKB {
 
 	private Long id;
 
@@ -22,11 +22,11 @@ public class KBCard {
 
 	private Calendar dueDate;
 
-	private KBUser assignedUser;
+	private UserKB assignedUser;
 
 	private int estimatedTimeMinutes;
 
-	private List<KBTag> tags = new ArrayList<KBTag>();
+	private List<TagKB> tags = new ArrayList<TagKB>();
 
 	private String url;
 	
@@ -39,13 +39,13 @@ public class KBCard {
 				+ ", url=" + url + ", location=" + location + ", column=" + column + "]";
 	}
 
-	private KBColumn column;
+	private ColumnKB column;
 
-	public KBCard() {
+	public CardKB() {
 		super();
 	}
 
-	public KBCard(String label, String description, int estimatedTimeMinutes, String url, String location) {
+	public CardKB(String label, String description, int estimatedTimeMinutes, String url, String location) {
 		super();
 		this.label = label;
 		this.description = description;
@@ -54,17 +54,17 @@ public class KBCard {
 		this.location = location;
 	}
 
-	public void addTag(KBTag tag) {
+	public void addTag(TagKB tag) {
 		this.tags.add(tag);
 	}
 
 	@OneToOne
-	public KBUser getAssignedUser() {
+	public UserKB getAssignedUser() {
 		return assignedUser;
 	}
 
 	@ManyToOne
-	public KBColumn getColumn() {
+	public ColumnKB getColumn() {
 		return column;
 	}
 
@@ -95,7 +95,7 @@ public class KBCard {
 	}
 
 	@ManyToMany(mappedBy="cards")
-	public List<KBTag> getTags() {
+	public List<TagKB> getTags() {
 		return tags;
 	}
 
@@ -103,11 +103,11 @@ public class KBCard {
 		return url;
 	}
 
-	public void setAssignedUser(KBUser assignedUser) {
+	public void setAssignedUser(UserKB assignedUser) {
 		this.assignedUser = assignedUser;
 	}
 
-	public void setColumn(KBColumn column) {
+	public void setColumn(ColumnKB column) {
 		this.column = column;
 	}
 
@@ -135,7 +135,7 @@ public class KBCard {
 		this.location = location;
 	}
 
-	public void setTags(List<KBTag> tags) {
+	public void setTags(List<TagKB> tags) {
 		this.tags = tags;
 	}
 
